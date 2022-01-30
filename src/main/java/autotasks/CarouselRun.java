@@ -41,7 +41,7 @@ public class CarouselRun {
         int newValue = 0;
         if (operation.equals("-")) {
             newValue = currentValue - 1;
-        } else if (operation.equals("/")){
+        } else if (operation.equals("/")) {
             newValue = currentValue / 2;
         }
 

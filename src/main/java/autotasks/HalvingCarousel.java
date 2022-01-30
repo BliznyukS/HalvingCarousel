@@ -1,22 +1,20 @@
 package autotasks;
 
-public class HalvingCarousel {
+public class HalvingCarousel extends DecrementingCarousel {
     private boolean isRunning;
     private int capacity;
     private CarouselRun carouselRun;
 
 
     public HalvingCarousel(int capacity) {
-        //super(capacity);
+        super(capacity);
         this.isRunning = false;
         this.capacity = capacity;
-        this.carouselRun = new CarouselRun("/"); //new CarouselRun("/")
+        this.carouselRun = new CarouselRun("/");
     }
 
     public boolean addElement(int element) {
-//        if (carouselRun == null) {
-//            this.carouselRun = new CarouselRun("-");
-//        }
+
         if (isRunning) {
             return false;
         }

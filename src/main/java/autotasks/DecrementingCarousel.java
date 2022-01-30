@@ -8,14 +8,12 @@ public class DecrementingCarousel {
     public DecrementingCarousel(int capacity) {
         this.isRunning = false;
         this.capacity = capacity;
-        carouselRun = new CarouselRun("-"); //new CarouselRun("-")
+        carouselRun = new CarouselRun("-");
 
     }
 
     public boolean addElement(int element) {
-//        if (carouselRun == null) {
-//            this.carouselRun = new CarouselRun("-");
-//        }
+
         if (isRunning) {
             return false;
         }
