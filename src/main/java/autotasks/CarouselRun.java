@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 public class CarouselRun {
 
+    private String operation;
     private int amountOfNotZeroElements; //could be atomicInt
     private LinkedList<Integer> carusel;
     private int decrementPosition;
@@ -17,7 +18,7 @@ public class CarouselRun {
         this.decrementPosition = 0;
     }
 
-    public LinkedList<Integer> getCarusel() {
+    public LinkedList<Integer> getCarousel() {
         return carusel;
     }
 
@@ -25,13 +26,25 @@ public class CarouselRun {
         this.carusel = new LinkedList();
     }
 
+    public CarouselRun(String operation) {
+        this.carusel = new LinkedList();
+        this.operation = operation;
+    }
+
     public int next() {
+
         if (carusel.isEmpty() || amountOfNotZeroElements == 0) {
             return -1;
         }
-
         int currentValue = carusel.get(this.decrementPosition);
-        int newValue = currentValue - 1;
+
+        int newValue = 0;
+        if (operation.equals("-")) {
+            newValue = currentValue - 1;
+        } else if (operation.equals("/")){
+            newValue = currentValue / 2;
+        }
+
         carusel.set(decrementPosition, newValue);
 
         if (newValue == 0) {
@@ -41,6 +54,8 @@ public class CarouselRun {
         this.decrementPosition = calculateNewDecrementPosition(this.decrementPosition);
 
         return currentValue;
+
+
     }
 
     public int calculateNewDecrementPosition(int currentDecrementPosition) {

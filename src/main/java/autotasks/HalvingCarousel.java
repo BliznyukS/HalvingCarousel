@@ -1,19 +1,36 @@
 package autotasks;
 
-public class HalvingCarousel extends DecrementingCarousel {
+public class HalvingCarousel {
     private boolean isRunning;
     private int capacity;
-    private HalvingCarousel carouselRun;
+    private CarouselRun carouselRun;
 
 
     public HalvingCarousel(int capacity) {
-        super(capacity);
+        //super(capacity);
         this.isRunning = false;
         this.capacity = capacity;
-        this.carouselRun = new HalvingCarousel(capacity);
+        this.carouselRun = new CarouselRun("/"); //new CarouselRun("/")
     }
 
-    @Override
+    public boolean addElement(int element) {
+//        if (carouselRun == null) {
+//            this.carouselRun = new CarouselRun("-");
+//        }
+        if (isRunning) {
+            return false;
+        }
+
+        if (element > 0 && capacity > 0) {
+            carouselRun.setAmountOfNotZeroElements(carouselRun.getAmountOfNotZeroElements() + 1);
+            carouselRun.getCarousel().add(element);
+            capacity = capacity - 1;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public CarouselRun run() {
         if (isRunning) {
             return null;
@@ -22,5 +39,4 @@ public class HalvingCarousel extends DecrementingCarousel {
             return carouselRun;
         }
     }
-
 }
